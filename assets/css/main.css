@@ -6,17 +6,29 @@ body {
     background-color: rgb(10, 10, 10);
     display: flex;
     align-items: center;
-    justify-content: center;
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding-top: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+body #start-id {
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    align-items: baseline;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding-top: 30px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
 }
 
 .start-container {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     padding: 20px 30px 10px 30px;
     color: rgb(63, 251, 229);
     border-radius: 10px;
@@ -83,6 +95,44 @@ button {
     width: 100%;
     padding: 1.3rem;
 }
+
+.scoreboard-container {
+    position: relative;
+    display: flex;
+    opacity: 50%;
+    flex-direction: column;
+    flex-basis: 1px;
+    float: right;
+    padding: 10px;
+    background-color: #2b2b2b;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    font-family: inherit;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+.scoreboard-container:hover {
+    opacity: 1.0;
+    display: inline-flex;
+}
+
+.scoreboard-item {
+    display: flex;
+
+}
+
+
+
+
+
+
+
+
+
 
 /*Changes submit button color on hover*/
 button:hover {

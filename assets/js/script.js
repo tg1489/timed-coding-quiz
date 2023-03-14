@@ -1,3 +1,4 @@
+const body = document;
 const quiz = document.getElementById('quiz'); // Quiz container
 const questionEl = document.getElementById('question'); // Question
 const choiceA = document.getElementById('a_text'); // A text element
@@ -152,62 +153,77 @@ startQuiz();
 
 
 // Checks to see if answer is correct:
-    submitButton.addEventListener('click', ()=>{
+submitButton.addEventListener('click', ()=>{
 
-        const answer = getSelected();
+    const answer = getSelected();
 
-        if (answer) {
-                        if (answer === quizData[currentQuiz].correct) {
-                            alert('Correct!');
-                            score++; // Add +1 to score
-                            scoreEl.innerHTML = `Score: ${score}/${quizData.length}`; // Show the new score
-                        } else {
-                            alert('Wrong');
-                            duration = duration -30; // Subtract 30 seconds from score when wrong
-                        }
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
+            alert('Correct!');
+            score++; // Add +1 to score
+            scoreEl.innerHTML = `Score: ${score}/${quizData.length}`; // Show the new score
+        } else {
+            alert('Wrong');
+            duration = duration -30; // Subtract 30 seconds from score when wrong
+        }
 
-                        currentQuiz++; // Move to the next question in the array
+        currentQuiz++; // Move to the next question in the array
 
-                        if (currentQuiz < quizData.length) {
-                            startQuiz(); // Keep going if there are still more questions
-                        } else {
-                            clearInterval(timer);
-                            { quiz.innerHTML=` <h2>You answered ${score}/${quizData.length} questions correctly.</h2>
-                                                    <br><center><ul><li id="high-score"></li></center></ul>
-                                                <br><center>Save your high score below.</center><br> <button onclick="saveScore()">Save</button>
-                                                
+        if (currentQuiz < quizData.length) {
+            startQuiz(); // Keep going if there are still more questions
+        } else {
+            clearInterval(timer);
+            { quiz.innerHTML=` <h2>You answered ${score}/${quizData.length} questions correctly.</h2>
+                <br><center><ul><li id="high-score"></li></center></ul>
+                <br><center><a href="index.html">Home</a></center>
+                <br><center>Save your high score below.</center><br> <button onclick="tempScore()">Save</button>
+                
 
 `;
 
-                            }
-                        }
-                    }
 
-    });
-
-
-    function saveScore() {
-         let name = prompt('What are your initials?'); // Gets the user's name
-         let jsList = document.getElementById('high-score'); // hooks onto the <li> element
-         jsList.innerHTML = `${name} : ${score}/${quizData.length}`; // Writes both the name and score
-
-         return jsList;
+            }
+        }
     }
 
+});
+
+
+let scoreBoardPopout = document.getElementById('scoreboard'); // Popout menu for scoreboard.
+
+// Display Score
+function showScoreConst() {
+
+
+            let div = document.createElement('div');
+            div.setAttribute('class', 'scoreboard-item');
+            scoreBoardPopout.appendChild(div);
+            div.innerHTML = `Name: ${localStorage.getItem('name')} Score: ${localStorage.getItem('score')}`
+            scoreBoardPopout.removeEventListener('click', showScoreConst);
+
+
+
+}
+scoreBoardPopout.addEventListener('click', showScoreConst); //Show scoreboard on click
 
 
 
 
-// Responsible for creating HTML DOM after user clicks on save
-// function createEl () {
-//
-//     const body = document.body; // <body>
-//     const jsDiv = document.createElement('div'); // <div>
-//     const jsOl = document.createElement('span'); // <ol>
-//     jsOl.setAttribute('id', 'score-list');
-//     jsDiv.setAttribute('id', 'high-scores'); // <div id="high-scores">
-//     jsOl.textContent = `${saveScore()}`; // <ol>Score</ol>
-//     jsOl.setAttribute('color', '#FFF'); // Makes <ol> white
-//     jsDiv.appendChild(jsOl); // ADD <div id="high-scores"><ol id='score-list'></ol></div>
-//     body.appendChild(jsDiv); // ADD <body><div id="high-scores"></div>
-// }
+
+// This displays the temporary score at the end of the quiz.
+function tempScore() {
+
+    let userInput = '';
+
+    while (userInput.length !== 2) {
+        let name = prompt('What are your initials?').toUpperCase(); // Gets the user's name
+
+        let name_serialized = JSON.stringify(name);
+        let score_serialized = JSON.stringify(score);
+        localStorage.setItem('score', score_serialized);
+        localStorage.setItem('name', name_serialized);
+        let jsList = document.getElementById('high-score'); // hooks onto the <li> element
+        return jsList.innerHTML = `<div>${name_serialized} : ${score_serialized}/${quizData.length}</div>`; // Writes both the name and score
+    }
+
+}

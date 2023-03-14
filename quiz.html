@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Timed Coding Quiz</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!--Multiple Choice Quiz Starts Here-->
+    <div class="quiz-container" id="quiz">
+      <!-- View High Scores -->
+      <div class="scoreboard-container" id="scoreboard">
+        <a class="" href="#">View High Scores</a>
 
-<!--Multiple Choice Quiz Starts Here-->
-<div class="quiz-container" id="quiz">
+      </div>
 
 
 
-    <div class="quiz-header">
+      <div class="quiz-header">
+
+          <span id="scoreboard-id"></span>
+
         <!--Timer-->
         <span id="timer" class="timer"></span>
 
         <!--Score-->
         <span id="score" class="score"></span>
 
-
-
         <!--Ask question here-->
-        <h2 id="question"></h2>
+        <h2 id="question"></h2> <!-- Switch this out with high scores -->
+
+
 
         <!--Put choices in an unordered list here-->
         <ul>
-            <li>
-                <input type="radio" id="a" name="answer" class="answer" />
-                <label id="a_text" for="a"></label>
-            </li>
-            <li>
-                <input type="radio" id="b" name="answer" class="answer" />
-                <label id="b_text" for="b"></label>
-            </li>
-            <li>
-                <input type="radio" id="c" name="answer" class="answer" />
-                <label id="c_text" for="c"></label>
-            </li>
-            <li>
-                <input type="radio" id="d" name="answer" class="answer" />
-                <label id="d_text" for="d"></label>
-            </li>
+          <li>
+            <input type="radio" id="a" name="answer" class="answer" />
+            <label id="a_text" for="a"></label>
+          </li>
+          <li>
+            <input type="radio" id="b" name="answer" class="answer" />
+            <label id="b_text" for="b"></label>
+          </li>
+          <li>
+            <input type="radio" id="c" name="answer" class="answer" />
+            <label id="c_text" for="c"></label>
+          </li>
+          <li>
+            <input type="radio" id="d" name="answer" class="answer" />
+            <label id="d_text" for="d"></label>
+          </li>
         </ul>
+      </div>
+
+      <!--Submit Answer Button-->
+      <button id="submit">Submit</button>
     </div>
 
-    <!--Submit Answer Button-->
-    <button id="submit">Submit</button>
-</div>
-<script src="assets/js/script.js"></script>
-</body>
+
+    </div>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
