@@ -198,8 +198,13 @@ function showScoreConst() {
             let div = document.createElement('div');
             div.setAttribute('class', 'scoreboard-item');
             scoreBoardPopout.appendChild(div);
-            div.innerHTML = `Name: ${localStorage.getItem('name')} Score: ${localStorage.getItem('score')}`
-            scoreBoardPopout.removeEventListener('click', showScoreConst);
+            if (localStorage.getItem('name') === null && localStorage.getItem('score') === null) {
+                div.innerHTML = `You don't have any scores saved.`
+                   
+            } else {
+                div.innerHTML = `Name: ${localStorage.getItem('name')} Score: ${localStorage.getItem('score')}`
+            }
+            scoreBoardPopout.removeEventListener('click', showScoreConst);  
 
 
 
