@@ -1,6 +1,6 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 # Timed Coding Quiz
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a timed coding quiz application implemented using JavaScript, HTML, and CSS. It presents the user with a series of multiple-choice questions and tracks their score as they progress through the quiz. The user has a limited time to complete the quiz, and for each wrong answer, a penalty of 30 seconds is deducted from the remaining time.
 
